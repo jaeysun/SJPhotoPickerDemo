@@ -144,6 +144,7 @@ static NSString *ID_SJPickPhotoCell = @"sJPickPhotoCell";
    
     SJPreviewPhotoController *vc = [[SJPreviewPhotoController alloc] init];
     vc.delegate = self;
+    vc.curIndex = indexPath.row;
     vc.previewArray = [self.photoArray mutableCopy];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -156,6 +157,7 @@ static NSString *ID_SJPickPhotoCell = @"sJPickPhotoCell";
     
     SJPreviewPhotoController *vc = [[SJPreviewPhotoController alloc] init];
     vc.delegate = self;
+    vc.curIndex = self.pickedArray.count - 1;
     vc.previewArray = [self.pickedArray mutableCopy];
     [self.navigationController pushViewController:vc animated:YES];
     

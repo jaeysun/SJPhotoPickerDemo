@@ -87,7 +87,7 @@ static NSString *ID_SJPreviewPhotoCell = @"sJPreviewPhotoCell";
         self.collectionView.dataSource = self;
         [self.collectionView registerClass:[SJPreviewPhotoCell class] forCellWithReuseIdentifier:ID_SJPreviewPhotoCell];
         self.collectionView.backgroundColor = [UIColor whiteColor];
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.previewArray.count - 1 inSection:0] atScrollPosition:(UICollectionViewScrollPositionNone) animated:NO];
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.curIndex inSection:0] atScrollPosition:(UICollectionViewScrollPositionNone) animated:NO];
         self.operatingModel = [self.previewArray lastObject];
         [self.view addSubview:self.collectionView];
     }
@@ -97,16 +97,16 @@ static NSString *ID_SJPreviewPhotoCell = @"sJPreviewPhotoCell";
        
         self.navBar = [[SJPhotoPickerNavBar alloc] init];
         self.navBar.delegate = self;
-        SJPhotoModel *lastModel = [self.previewArray lastObject];
+        self.operatingModel = self.previewArray[self.curIndex];
         
         if (self.title.length == 0) {
             self.navBar.leftBtnTitle = @"";
         }
-        self.navBar.barTitle = [NSString stringWithFormat:@"%lu/%lu",(unsigned long)self.previewArray.count,(unsigned long)self.previewArray.count];
+        self.navBar.barTitle = [NSString stringWithFormat:@"%lu/%lu",(unsigned long)self.curIndex + 1,(unsigned long)self.previewArray.count];
         
-        if (lastModel.isPicked) {
+        if (self.operatingModel.isPicked) {
           
-            [self.navBar setRightBtnTitleIndex:lastModel.pickedIndex];
+            [self.navBar setRightBtnTitleIndex:self.operatingModel.pickedIndex];
         }
         [self.view addSubview:self.navBar];
  

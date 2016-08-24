@@ -20,6 +20,7 @@
 @interface SJPreviewPhotoController : UIViewController
 
 @property (nonatomic, strong) NSMutableArray *previewArray;
+@property (nonatomic, assign) NSInteger curIndex;
 
 @property (nonatomic, strong) id<SJPreviewPhotoControllerDelegate> delegate;
 
