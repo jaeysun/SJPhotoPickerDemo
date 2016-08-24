@@ -196,8 +196,7 @@ static NSString *ID_SJPickPhotoCell = @"sJPickPhotoCell";
 
 
 - (void)changeCell:(SJPickPhotoCell *)changedCell WithModel:(SJPhotoModel *)changedModel {
-    
-    
+
     if (changedModel.isPicked) {
         
         [changedCell modelChangePickedIndex:self.pickedArray.count + 1];

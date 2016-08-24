@@ -112,7 +112,7 @@
     
     if (self.barHide) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.frame = CGRectMake(0, 0, SCREEN_W, 0);
+            self.frame = CGRectMake(0, -64, SCREEN_W, 64);
         }];
     }
     else {
