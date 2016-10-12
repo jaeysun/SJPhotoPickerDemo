@@ -50,7 +50,6 @@ static NSString *ID_SJPickPhotoCell = @"sJPickPhotoCell";
 
 #pragma mark 数据初始化
 - (void)setupDatas {
-    
     // photoArray
     {
         self.photoArray = [NSMutableArray array];
@@ -66,7 +65,6 @@ static NSString *ID_SJPickPhotoCell = @"sJPickPhotoCell";
         }
         [self.collectionView reloadData];
     }
-    
     // pickedArray
     {
         self.pickedArray = [NSMutableArray array];
@@ -105,7 +103,6 @@ static NSString *ID_SJPickPhotoCell = @"sJPickPhotoCell";
         [self.toolBar.rightBtn addTarget:self action:@selector(sureBtnAction:) forControlEvents:(UIControlEventTouchUpInside)];
         [self.view addSubview:self.toolBar];
     }
-    
 }
 
 #pragma mark- UICollectionViewDelegate DataSource
@@ -155,12 +152,14 @@ static NSString *ID_SJPickPhotoCell = @"sJPickPhotoCell";
 #pragma mark 预览
 - (void)previewPhotoAction:(UIButton *)sender {
     
-    SJPreviewPhotoController *vc = [[SJPreviewPhotoController alloc] init];
-    vc.delegate = self;
-    vc.curIndex = self.pickedArray.count - 1;
-    vc.previewArray = [self.pickedArray mutableCopy];
-    [self.navigationController pushViewController:vc animated:YES];
-    
+    if (self.pickedArray.count > 0) {
+        
+        SJPreviewPhotoController *vc = [[SJPreviewPhotoController alloc] init];
+        vc.delegate = self;
+        vc.curIndex = self.pickedArray.count - 1;
+        vc.previewArray = [self.pickedArray mutableCopy];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark 取消
