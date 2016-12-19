@@ -14,6 +14,8 @@
 
 #import "SJPhotoPickerNavController.h"
 
+
+
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) IBOutlet UIView *pickImageV;

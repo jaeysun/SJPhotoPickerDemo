@@ -35,6 +35,8 @@
     // 使用PHImageManager从PHAsset中请求图片
     PHImageManager *imageManager = [[PHImageManager alloc] init];
     
+    
+    
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.resizeMode = PHImageRequestOptionsResizeModeExact;
     
@@ -47,9 +49,11 @@
 }
 
 - (void)requestAlbumsWithType:(PHAssetCollectionType)type albumResult:(AlbumBlock)albumBlock {
+   
     // 列出所有相册智能相册
     PHFetchResult *assetCollectionResult = [PHAssetCollection fetchAssetCollectionsWithType:type subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
     
+
     NSMutableArray *albumArray = [NSMutableArray array];
     // 这时 smartAlbums 中保存的应该是各个智能相册对应的 PHAssetCollection
     for (NSInteger i = 0; i < assetCollectionResult.count; i++) {
@@ -59,10 +63,12 @@
         if ([collection class] == [PHAssetCollection class]) {
             
             PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
+     
             
             PHFetchResult *assetResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
             
             if (assetResult.count != 0) {
+                
                 SJAlbumModel *model = [[SJAlbumModel alloc] init];
                 model.title = collection.localizedTitle;
                 model.assetResult = assetResult;
